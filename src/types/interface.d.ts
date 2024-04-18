@@ -16,3 +16,8 @@ export interface BaseMovie {
     vote_count: number;
     favourite?: boolean;
   }
+
+  //Assembling the Home page.
+  export interface BaseMovieList { 
+    movies: BaseMovie[];
+  }   
