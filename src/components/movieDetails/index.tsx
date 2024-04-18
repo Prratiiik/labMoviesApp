@@ -7,6 +7,7 @@ import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
 import { MovieT } from "../../types/interface";
 
+
 const styles = {
     chipSet: {
         display: "flex",
@@ -56,6 +57,16 @@ const MovieDetails: React.FC<MovieT> = (props) => {
                 />
                 <Chip label={`Released: ${props.release_date}`} />
             </Paper>
+            <Paper component="ul" sx={styles.chipSet}>
+        <li>
+          <Chip label="Production Countries" sx={styles.chipLabel} color="primary" />
+        </li>
+        {props.production_countries.map((g) => (
+          <li key={g.iso_3166_1}>
+            <Chip label={g.name} />
+          </li>
+        ))}
+      </Paper>
         </>
     );
 };

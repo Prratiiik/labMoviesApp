@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { MovieT } from "../../types/interface"; 
+import { Chip } from "@mui/material";
 
 const styles = {
     root: {  
@@ -37,7 +38,10 @@ const MovieHeader: React.FC<MovieT> = (props) => {
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>
-  );
+    
+    );
 };
 
 export default MovieHeader;
+
+  
