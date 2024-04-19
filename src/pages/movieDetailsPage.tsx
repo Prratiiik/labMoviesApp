@@ -7,6 +7,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { MovieT, MovieImage } from "../types/interface";
 import { useParams } from "react-router-dom";
 
+
 const styles = {
   imageListRoot: {
     display: "flex",
