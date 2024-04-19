@@ -53,3 +53,8 @@ export interface BaseMovie {
     }[];
   }
   
+//live movie data
+  export interface ListedMovie extends BaseMovie {
+    genre_ids: number[];
+  }
+  export type FilterOption = "title" | "genre";

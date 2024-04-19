@@ -13,6 +13,7 @@ import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import img from '../../images/film-poster-placeholder.png';
 import { BaseMovie } from "../../types/interface"; 
+import { Link } from "react-router-dom";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -24,6 +25,12 @@ const styles = {
 
 const MovieCard: React.FC<BaseMovie> = (props) => {
  
+    //More info Link
+    <Link to={`/movies/${props.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
+        </Link>
 
   return (
     <Card sx={styles.card}>
