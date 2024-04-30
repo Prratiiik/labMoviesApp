@@ -4,6 +4,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import { MovieT } from "../../types/interface";
+import { Avatar } from "@mui/material";
 
 const styles = {
     root: {
@@ -13,33 +15,41 @@ const styles = {
         flexWrap: "wrap",
         marginBottom: 1.5,
     },
+    avatar: {
+        backgroundColor: "rgb(255, 0, 0)",
+    },
 };
 
-interface HeaderProps {
-    title: string;
-}
 
-const Header: React.FC<HeaderProps> = (props) => {
-    const title = props.title
 
+const MovieHeader: React.FC<MovieT> = (props) => {
+    const movies = JSON.parse(localStorage.getItem("favourites") || "[]");
+    const isFavorite = movies.some((movie: MovieT) => movie.id === props.id);
     return (
         <Paper component="div" sx={styles.root}>
-            <IconButton
-                aria-label="go back"
-            >
-                <ArrowBackIcon color="primary" fontSize="large" />
-            </IconButton>
+       {isFavorite && (
+         <Avatar sx={styles.avatar}>
+         <FavoriteIcon />
+       </Avatar>
+      )}
+      <IconButton aria-label="go back">
+        <ArrowBackIcon color="primary" fontSize="large" />
+      </IconButton>
 
-            <Typography variant="h4" component="h3">
-                {title}
-            </Typography>
-            <IconButton
-                aria-label="go forward"
-            >
-                <ArrowForwardIcon color="primary" fontSize="large" />
-            </IconButton>
-        </Paper>
+      <Typography variant="h4" component="h3">
+        {props.title}
+        {"   "}
+        <a href={props.homepage}>
+          <HomeIcon color="primary" fontSize="large" />
+        </a>
+        <br />
+        <span>{`${props.tagline}`} </span>
+      </Typography>
+      <IconButton aria-label="go forward">
+        <ArrowForwardIcon color="primary" fontSize="large" />
+      </IconButton>
+    </Paper>
     );
 };
 
-export default Header;
+export default MovieHeader;

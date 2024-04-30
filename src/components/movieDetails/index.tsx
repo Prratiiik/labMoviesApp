@@ -6,6 +6,10 @@ import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import Typography from "@mui/material/Typography";
 import { MovieT } from "../../types/interface";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import Fab from "@mui/material/Fab";
+import Drawer from "@mui/material/Drawer";
+import MovieReviews from '../movieReviews'
 
 
 const styles = {
@@ -21,9 +25,16 @@ const styles = {
     chipLabel: {
         margin: 0.5,
     },
+    fab: { 
+        position: "fixed",
+        top: 50,
+        right: 2,
+      },
 };
 
 const MovieDetails: React.FC<MovieT> = (props) => {
+    const movie=props;
+    const [drawerOpen, setDrawerOpen] = useState(false); // New
 
     return (
         <>
@@ -57,17 +68,23 @@ const MovieDetails: React.FC<MovieT> = (props) => {
                 />
                 <Chip label={`Released: ${props.release_date}`} />
             </Paper>
-            <Paper component="ul" sx={styles.chipSet}>
-        <li>
-          <Chip label="Production Countries" sx={styles.chipLabel} color="primary" />
-        </li>
-        {props.production_countries.map((g) => (
-          <li key={g.iso_3166_1}>
-            <Chip label={g.name} />
-          </li>
-        ))}
-      </Paper>
+            <Fab    
+        color="secondary"
+        variant="extended"
+        onClick={() =>setDrawerOpen(true)}
+        sx={styles.fab}
+      >
+        <NavigationIcon />
+        Reviews
+      </Fab>
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <MovieReviews {...movie} />
+      </Drawer>
         </>
     );
 };
 export default MovieDetails;
+function useState(arg0: boolean): [any, any] {
+    throw new Error("Function not implemented.");
+}
+

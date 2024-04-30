@@ -33,8 +33,8 @@ interface FilterMoviesCardProps {
     genreFilter: string;
   }
 
-const FilterMoviesCard: React.FC<FilterMoviesCardProps> = (props) => {
-  const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+    const FilterMoviesCard: React.FC<FilterMoviesCardProps> = (props) => {
+    const [genres, setGenres] = useState([{ id: '0', name: "All" }])
  
      useEffect(() => {
      getGenres().then((allGenres) => {
@@ -43,22 +43,22 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
  
-   const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
-    e.preventDefault()
-    props.onUserInput(type, value)
-  };
+       const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
+         e.preventDefault()
+         props.onUserInput(type, value)
+       };
 
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    handleChange(e, "title", e.target.value)
-  }
+         const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+            handleChange(e, "title", e.target.value)
+        }
 
-  const handleGenreChange = (e: SelectChangeEvent) => {
-    handleChange(e, "genre", e.target.value)
-  };
-  return (
-    <>
-    <Card sx={styles.root} variant="outlined">
-      <CardContent>
+         const handleGenreChange = (e: SelectChangeEvent) => {
+         handleChange(e, "genre", e.target.value)
+         };
+    return (
+        <>
+        <Card sx={styles.root} variant="outlined">
+        <CardContent>
         <Typography variant="h5" component="h1">
           <FilterAltIcon fontSize="large" />
           Filter the movies.

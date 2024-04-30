@@ -24,9 +24,8 @@ const styles = {
     backgroundColor: "rgb(255, 0, 0)",
   },
 };
-
     interface MovieCardProps extends BaseMovie {
-    selectFavourite: (movieId: number) => void;
+        selectFavourite: (movieId: number) => void;
   }
   
   const MovieCard: React.FC<MovieCardProps> = (props) => {// update this
