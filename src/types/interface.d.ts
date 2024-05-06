@@ -68,8 +68,11 @@ export interface BaseMovie {
 
   export interface Review{
     id: string;
-    content: string
-    author: string
+    content: string,
+    author: string,
+    agree: boolean,
+    rating: number,
+    movieId: number,
   }
 
 //CircularIndeterminate
