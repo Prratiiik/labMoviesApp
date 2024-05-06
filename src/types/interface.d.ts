@@ -63,7 +63,7 @@ export interface BaseMovie {
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
-    selectFavourite: (m: number) => void;
+    action: (m: MovieT) => void;
   }
 
   export interface Review{
@@ -71,7 +71,7 @@ export interface BaseMovie {
     content: string
     author: string
   }
-  
+
 //CircularIndeterminate
   export interface GenreData {
     genres: {
