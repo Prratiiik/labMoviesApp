@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -84,7 +84,5 @@ const MovieDetails: React.FC<MovieT> = (props) => {
     );
 };
 export default MovieDetails;
-function useState(arg0: boolean): [any, any] {
-    throw new Error("Function not implemented.");
-}
+
 

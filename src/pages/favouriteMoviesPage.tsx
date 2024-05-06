@@ -1,5 +1,5 @@
 import React from "react";
-import PageTemplate from "../components/templateMovieListPage";
+import MovieListPageTemplate from "../components/templateMovieListPage";
 
 const FavouriteMoviesPage: React.FC= () => {
     const toDo = () => true;
@@ -7,7 +7,7 @@ const FavouriteMoviesPage: React.FC= () => {
     const movies = JSON.parse(localStorage.getItem("favourites") || '[]');
   
     return (
-      <PageTemplate
+      <MovieListPageTemplate
         title="Favourite Movies"
         movies={movies}
         selectFavourite={toDo}

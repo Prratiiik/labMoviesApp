@@ -43,7 +43,7 @@ function MovieListPageTemplate({ movies, title, selectFavourite }: MovieListPage
    <>
       <Grid container sx={styles.root}>
         <Grid item xs={12}>
-          <Header title={title} genres={[]} production_countries={[]} budget={0} homepage={undefined} id={0} imdb_id={""} original_language={""} overview={""} release_date={""} vote_average={0} popularity={0} tagline={""} runtime={0} revenue={0} vote_count={0} />
+          <Header title={title} />
         </Grid>
         <Grid item container spacing={5}>
           <MovieList

@@ -9,7 +9,6 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { getMovieReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../utils";
-
 import { MovieT, Review } from "../../types/interface"; // Import the MovieT type from the appropriate location
 
 const styles = {

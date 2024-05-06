@@ -8,6 +8,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { MovieT } from "../../types/interface";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
 const styles = {
   root: {
     display: "flex",
