@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import { UpcomingMovies } from "../types/interface";
+import { UpcomingMovies, ListedMovie } from "../types/interface";
 import MovieListPageTemplate from "../components/templateMovieListPage";
 import { getUpcomingMovies } from "../api/tmdb-api";
 // import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
@@ -24,8 +24,8 @@ import Spinner from "../components/spinner";
           movies={movies}
         //   action={(movie: ListedMovie) => {
         //     return <AddToFavouritesIcon {...movie} />
-            action={() => {
-                return <AddToPlaylist/>
+        action={(movie: ListedMovie) => {
+            return <AddToPlaylist {...movie} />
             }
           }
         />
