@@ -93,3 +93,10 @@ export interface BaseMovie {
     total_results: number;
     results: BaseMovie[];
   }
+
+  interface UpcomingMovies {
+    page: number;
+    total_pages: number;
+    total_results: number;
+    results: ListedMovie[];
+  }
