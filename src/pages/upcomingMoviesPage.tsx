@@ -3,10 +3,10 @@ import { useState, useEffect, FC } from "react";
 import { ListedMovie } from "../types/interface";
 import MovieListPageTemplate from "../components/templateMovieListPage";
 import { getUpcomingMovies } from "../api/tmdb-api";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+// import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import AddToPlaylist from "../components/cardIcons/addToPlaylist";
 
-
-  const HomePage: FC= () => {
+  const UpcomingMoviesPage: FC= () => {
     const [movies, setMovies] = useState<ListedMovie[]>([]);
       
     useEffect(() => {
@@ -20,10 +20,13 @@ import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
           <MovieListPageTemplate
           title='Upcoming Movies'
           movies={movies}
-          action={(movie: ListedMovie) => {
-            return <AddToFavouritesIcon {...movie} />
-          }}
+        //   action={(movie: ListedMovie) => {
+        //     return <AddToFavouritesIcon {...movie} />
+            action={() => {
+                return <AddToPlaylist/>
+            }
+          }
         />
       );
     };
-    export default HomePage;
+    export default UpcomingMoviesPage;
