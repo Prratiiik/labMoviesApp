@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ListedMovie, MovieT } from "../types/interface";
+import { ListedMovie, MovieT, Review } from "../types/interface";
 
 interface MovieContextInterface {
     favourites: number[];
@@ -7,10 +7,10 @@ interface MovieContextInterface {
     removeFromFavourites: ((movie: ListedMovie) => void);
     addReview: ((movie: MovieT, review: Review) => void);  // NEW
 }
-const initialContextState = {
+const initialContextState: MovieContextInterface = {
     favourites: [],
     addToFavourites: (movie: ListedMovie) => {movie.id },
-    removeFromFavourites: (movie: ListedMovie) => { movie.id}
+    removeFromFavourites: (movie: ListedMovie) => { movie.id},
     addReview: (movie, review) => { movie.id, review},  // NEW
 };
 

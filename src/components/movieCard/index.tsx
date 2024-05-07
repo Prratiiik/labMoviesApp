@@ -34,22 +34,18 @@ interface MovieListProps {
   
   const MovieCard: React.FC<MovieListProps> = (props) => {
     const movie = {...props.movie, favourite: false};
-  
-    const { favourites, addToFavourites } = useContext(MoviesContext);
+     
+    const { favourites } = useContext(MoviesContext);
     
     if (favourites.find((id) => id === movie.id)) 
       movie.favourite = true;
-
-    // const handleAddToFavourite = (e: MouseEvent<HTMLButtonElement>) => {
-    //     e.preventDefault();
-    //     addToFavourites(movie);
-    //  };
+     {props.action(movie)}
 
   return (
     <Card sx={styles.card}>
       <CardHeader
         avatar={
-          props.favourite ? (
+          movie.favourite ? (
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
@@ -57,15 +53,15 @@ interface MovieListProps {
         }
         title={
           <Typography variant="h5" component="p">
-            {props.title}{" "}
+            {movie.title}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={styles.media}
         image={
-          props.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${props.poster_path}`
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
             : img
         }
       />
@@ -74,13 +70,13 @@ interface MovieListProps {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {props.release_date}
+              {movie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {props.vote_average}{" "}
+              {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
@@ -90,7 +86,7 @@ interface MovieListProps {
           <FavoriteIcon color="primary" fontSize="large" />
           </IconButton> */}
            {props.action(movie)}
-          <Link to={`/movies/${props.id}`}>
+          <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

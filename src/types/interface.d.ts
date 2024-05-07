@@ -1,3 +1,4 @@
+import React from "react";
 export interface BaseMovie {
     title: string;
     budget: number;
@@ -26,6 +27,9 @@ export interface BaseMovie {
   export interface MovieT extends BaseMovie {
     genres: {
       id: number;
+      name: string;
+    }[];
+    production_countries: {
       name: string;
     }[];
   }
@@ -63,7 +67,7 @@ export interface BaseMovie {
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
-    action: (m: MovieT) => void;
+    action: (m: ListedMovie) => React.ReactNode;
   }
 
   export interface Review{

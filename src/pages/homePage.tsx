@@ -6,7 +6,7 @@ import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
-import { DiscoverMovies } from "../types/interface";
+import { DiscoverMovies, ListedMovie } from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
@@ -23,7 +23,7 @@ const genreFiltering = {
   condition: genreFilter,
 };
 
-const HomePage = (props) => {
+const HomePage: React.FC = (props) => {
   const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getMovies);
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -64,7 +64,7 @@ const HomePage = (props) => {
       action={(movie: ListedMovie) => {
         return <AddToFavouritesIcon {...movie} />
       }}
-
+      />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
