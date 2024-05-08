@@ -12,16 +12,7 @@ import { MoviesContext } from "../contexts/moviesContext";
     const { pageMovies, setPageMovies } = useContext(MoviesContext);
     const {data, error, isLoading, isError} = useQuery<UpcomingMovies, Error>("Upcoming movies", () => getUpcomingMovies(pageMovies));
     const movies = data ? data.results :[] ;
-//     const { pageUpcomingMovies, setPageUpcomingMovies } =
-//     useContext(MoviesContext);
-//   const { isLoading, isError, error, data, isFetching } = useQuery(
-//     ["upcoming", pageUpcomingMovies],
-//     () => getUpcomingMovies(pageUpcomingMovies)
-//   );
-//   const { filterValues, setFilterValues, filterFunction } = useFiltering(
-//     [],
-//     [titleFiltering, genreFiltering]
-//   );
+
     if (isLoading) {
         return <Spinner />;
     }
@@ -34,8 +25,6 @@ import { MoviesContext } from "../contexts/moviesContext";
           <MovieListPageTemplate
                 title='Upcoming Movies'
                 movies={movies}
-                //   action={(movie: ListedMovie) => {
-                //     return <AddToFavouritesIcon {...movie} />
                 action={(movie: ListedMovie) => {
                     return <AddToPlaylist {...movie} />;
                 } } page={pageMovies} pageSetter={setPageMovies}        />

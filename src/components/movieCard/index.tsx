@@ -40,7 +40,6 @@ interface MovieListProps {
     const { favourites } = useContext(MoviesContext);
     const openDetails = (e: any ) => {
         if (e.target instanceof SVGElement) return;
-        // navigate(`/movies/${movie.id}`);
         <Navigate to ={`/movies/${movie.id}`} replace={true} />
       };
     
@@ -50,7 +49,7 @@ interface MovieListProps {
 
   return (
     <Card sx={styles.card}
-    onClick={openDetails}>
+     onClick={openDetails}>
       <CardHeader
         avatar={
           movie.favourite ? (
@@ -90,16 +89,13 @@ interface MovieListProps {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-          {/* <IconButton aria-label="add to favourites" onClick={handleAddToFavourite}>
-          <FavoriteIcon color="primary" fontSize="large" />
-          </IconButton> */}
            {props.action(movie)}
           <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
-        </Link>
-      </CardActions>
+          </Link>
+       </CardActions>
     </Card>
   );
 }

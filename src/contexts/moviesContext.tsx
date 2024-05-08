@@ -8,10 +8,10 @@ interface MovieContextInterface {
     addTomustWatch: ((movie: ListedMovie) => void);
     removeFromFavourites: ((movie: ListedMovie) => void);
     addReview: ((movie: MovieT, review: Review) => void);  // NEW
-    pageMovies: any;
-    setPageMovies : any;
-    pageUpcomingMovies: any;
-    setPageUpcomingMovies: any;
+    pageMovies: 1;
+    setPageMovies : 1;
+    pageUpcomingMovies: ()=>{};
+    setPageUpcomingMovies: ()=>{};
 }
 
 // const initialContextState: MovieContextInterface = {

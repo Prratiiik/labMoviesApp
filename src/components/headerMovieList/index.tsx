@@ -24,17 +24,10 @@ const styles = {
 interface HeaderProps {
     title: string;
 }
-
-// const Header: React.FC<HeaderProps> = (props) => {
-//     const title = props.title
-// const Header : React.FC<HeaderProps> = (props) => {
-//  ({title, page, pageSetter}) => {
 const Header: React.FC<{ title: string; page: number; pageSetter: (page: number) => void }> = ({ title, page, pageSetter }) => {
     return (
         <Paper component="div" sx={styles.root}>
             <IconButton
-                //     aria-label="go back"
-                // >
                 aria-label="go back"
                 disabled={page === 1}
                 style={page === 1 ? { opacity: 0.5, cursor: 'not-allowed' } : undefined}
