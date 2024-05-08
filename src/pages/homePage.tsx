@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { getMovies } from "../api/tmdb-api";
 import useFiltering from "../hooks/useFiltering";
@@ -10,6 +10,7 @@ import { DiscoverMovies, ListedMovie } from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites';
+import { MoviesContext } from "../contexts/moviesContext";
 
 
 const titleFiltering = {
@@ -24,7 +25,15 @@ const genreFiltering = {
 };
 
 const HomePage: React.FC = (props) => {
-  const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getMovies);
+  // const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getMovies);
+  const { pageMovies, setPageMovies } = useContext(MoviesContext);
+  const { isLoading, isError, error, data, isFetching } = useQuery(
+    ["discover", pageMovies],
+    () => getMovies(pageMovies),
+    {
+      keepPreviousData: true,
+    }
+  );
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
@@ -35,7 +44,9 @@ const HomePage: React.FC = (props) => {
   }
 
   if (isError) {
-    return <h1>{error.message}</h1>;
+    return <h1>
+      {/* {error} */}error
+      </h1>;
   }
 
 
@@ -64,6 +75,8 @@ const HomePage: React.FC = (props) => {
       action={(movie: ListedMovie) => {
         return <AddToFavouritesIcon {...movie} />
       }}
+      page={pageMovies}
+      pageSetter={setPageMovies}
       />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}

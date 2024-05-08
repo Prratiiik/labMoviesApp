@@ -39,7 +39,7 @@ const FavouriteMoviesPage: React.FC = () => {
 
   // Create an array of queries and run them in parallel.
   const favouriteMovieQueries = useQueries(
-    movieIds.map((movieId) => {
+    movieIds.map((movieId: any) => {
       return {
         queryKey: ["movie", movieId ],
         queryFn: () => getMovie(movieId.toString()),
@@ -83,8 +83,7 @@ const FavouriteMoviesPage: React.FC = () => {
               <WriteReview {...movie} />
             </>
           );
-        }}
-      />
+        } } page={""} pageSetter={""}      />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}

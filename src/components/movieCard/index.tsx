@@ -18,6 +18,8 @@ import {MouseEvent} from "react";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedMovie } from "../../types/interface";
+import { Navigate } from "react-router-dom";
+
 
 const styles = {
   card: { maxWidth: 345 },
@@ -36,13 +38,19 @@ interface MovieListProps {
     const movie = {...props.movie, favourite: false};
      
     const { favourites } = useContext(MoviesContext);
+    const openDetails = (e: any ) => {
+        if (e.target instanceof SVGElement) return;
+        // navigate(`/movies/${movie.id}`);
+        <Navigate to ={`/movies/${movie.id}`} replace={true} />
+      };
     
-    if (favourites.find((id) => id === movie.id)) 
+    if (favourites.find((id: any) => id === movie.id)) 
       movie.favourite = true;
      {props.action(movie)}
 
   return (
-    <Card sx={styles.card}>
+    <Card sx={styles.card}
+    onClick={openDetails}>
       <CardHeader
         avatar={
           movie.favourite ? (

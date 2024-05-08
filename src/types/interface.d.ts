@@ -67,6 +67,8 @@ export interface BaseMovie {
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
+    page: string;
+    pageSetter: string;
     action: (m: ListedMovie) => React.ReactNode;
   }
 
