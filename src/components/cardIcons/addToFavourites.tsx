@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {ListedMovie} from "../../types/interface"
 
+
 const AddToFavouritesIcon: React.FC<ListedMovie> = (movie) => {
   const context = useContext(MoviesContext);
 

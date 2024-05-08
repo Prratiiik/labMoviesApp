@@ -100,3 +100,15 @@ export const getUpcomingMovies = (page: any) => {
     throw error
   });
 };
+
+export const getRecommendedMovies = (id: string | number) =>
+  fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`
+).then((response) => {
+  if (!response.ok) {
+    throw new Error("Unable to fetch movies.Response status: ${response.status}");
+  }
+  return response.json();
+}).then((json) => json.posters)
+  .catch((error) => {
+    throw error
+  });

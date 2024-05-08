@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -10,7 +10,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from '../movieReviews'
-
+import RecommendedMovies from "../recommendedMovies";
 
 const styles = {
     chipSet: {
@@ -25,26 +25,32 @@ const styles = {
     chipLabel: {
         margin: 0.5,
     },
-    fab: { 
+    fab: {
         position: "fixed",
         top: 50,
         right: 2,
-      },
+    },
 };
 
 const MovieDetails: React.FC<MovieT> = (props) => {
-    const movie=props;
+    const movie = props;
     const [drawerOpen, setDrawerOpen] = useState(false); // New
 
     return (
         <>
-            <Typography variant="h5" component="h3">
+            {/* <Typography variant="h5" component="h3">
                 Overview
             </Typography>
 
             <Typography variant="h6" component="p">
                 {props.overview}
-            </Typography>
+            </Typography> */}
+                <Typography variant="h6" component="h6" >
+                    Overview
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {props.overview}
+                </Typography>
 
             <Paper component="ul" sx={styles.chipSet}>
                 <li>
@@ -68,18 +74,24 @@ const MovieDetails: React.FC<MovieT> = (props) => {
                 />
                 <Chip label={`Released: ${props.release_date}`} />
             </Paper>
-            <Fab    
-        color="secondary"
-        variant="extended"
-        onClick={() =>setDrawerOpen(true)}
-        sx={styles.fab}
-      >
-        <NavigationIcon />
-        Reviews
-      </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews {...movie} />
-      </Drawer>
+            <Paper>
+                <Typography variant="h6" component="h6" >
+                    Recommended movies
+                </Typography>
+                <RecommendedMovies movie={movie} />
+            </Paper>
+            <Fab
+                color="secondary"
+                variant="extended"
+                onClick={() => setDrawerOpen(true)}
+                sx={styles.fab}
+            >
+                <NavigationIcon />
+                Reviews
+            </Fab>
+            <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <MovieReviews {...movie} />
+            </Drawer>
         </>
     );
 };
