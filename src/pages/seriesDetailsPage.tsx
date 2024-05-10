@@ -5,7 +5,6 @@ import { BaseSeries, MovieT} from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 import { getOneSeries, getSeries } from "../api/tmdb-api";
-import SeriesListPageTemplate from "../components/templateTVSeriesListPage";
 import TemplateSeriesPage from "../components/templateSeriesPage";
 
 const SeriesDetailsPage: React.FC= () => {

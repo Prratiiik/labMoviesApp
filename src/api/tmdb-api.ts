@@ -113,7 +113,35 @@ export const getActors = () => {
       throw error;
     });
 };
+
+export const getOneActors = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to get movie data. Response status: ${response.status}`);
+    }
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
+};
   
+export const getActorImages = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/person/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error("failed to fetch images");
+    }
+    return response.json();
+  }).then((json) => json.posters)
+    .catch((error) => {
+      throw error
+    });
+};
+
   export const getSeries = () => {
     return fetch(
       `https://api.themoviedb.org/3/discover/tv?api_key=${

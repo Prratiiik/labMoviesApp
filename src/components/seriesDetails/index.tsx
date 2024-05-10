@@ -44,6 +44,28 @@ const SeriesDetails: React.FC<BaseSeries> = (props) => {
         {props.overview}
       </Typography>
 
+      {/* <Paper component="ul" sx={styles.chipSet}>
+        <li>
+          <Chip label="Genres" sx={styles.chipLabel} color="primary" />
+        </li>
+        {props.genres.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} />
+          </li>
+        ))}
+      </Paper>
+      <Paper component="ul" sx={styles.chipSet}>
+        <Chip icon={<AccessTimeIcon />} label={`${props.runtime} min.`} />
+        <Chip
+          icon={<MonetizationIcon />}
+          label={`${props.revenue.toLocaleString()}`}
+        />
+        <Chip
+          icon={<StarRate />}
+          label={`${props.vote_average} (${props.vote_count}`}
+        />
+        <Chip label={`Released: ${props.release_date}`} />
+      </Paper> */}
       <Fab
         color="secondary"
         variant="extended"
