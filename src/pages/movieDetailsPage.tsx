@@ -1,10 +1,10 @@
-import React from "react"; // replace existing react import
+import React, {useEffect} from "react"; // replace existing react import
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
-import { MovieT} from "../types/interface";
+import { MovieT, Similar} from "../types/interface";
 import PageTemplate from "../components/templateMoviePage";
-import useMovie from "../hooks/useMovie";
-import { getMovie } from '../api/tmdb-api';
+import { getMovie, getSimilarMovies } from '../api/tmdb-api';
+import SimilarMovies from "../components/similarMovies";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
@@ -15,7 +15,12 @@ const MovieDetailsPage: React.FC= () => {
     ()=> getMovie(id||"")
   );
 
-  if (isLoading) {
+  const { data: similarMovies, error: similarMoviesError, isLoading: similarMoviesLoading, isError: similarMoviesIsError } = useQuery<Similar, Error>(
+    ["similarMovies", id],
+    () => getSimilarMovies(id || "")
+  );
+
+  if (isLoading || similarMoviesLoading) {
     return <Spinner />;
   }
 
@@ -29,6 +34,7 @@ const MovieDetailsPage: React.FC= () => {
         <>
         <PageTemplate movie={movie as MovieT}> 
           <MovieDetails {...movie as MovieT} />
+          <SimilarMovies movies={similarMovies?.results || []} />
         </PageTemplate>
       </>
     ) : (

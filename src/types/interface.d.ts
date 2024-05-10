@@ -162,3 +162,10 @@ export interface BaseMovie {
     total_results: number;
     results: ListedTVSeries[];
   }
+
+  interface Similar {
+    page: number;	
+    total_pages: number;
+    total_results: number;
+    results: ListedMovie[];
+  }
