@@ -18,6 +18,24 @@ export interface BaseMovie {
     favourite?: boolean;
   }
 
+  export interface BaseSeries {
+    title: string;
+    budget: number;
+    homepage: string | undefined;
+    id: number;
+    imdb_id: string;
+    original_language: string;
+    overview: string;
+    release_date: string;
+    vote_average: number;
+    popularity: number;
+    poster_path?: string;
+    tagline: string;
+    runtime: number;
+    revenue: number;
+    vote_count: number;
+    favourite?: boolean;
+  }
   //Assembling the Home page.
   export interface BaseMovieList { 
     movies: BaseMovie[];
@@ -32,6 +50,10 @@ export interface BaseMovie {
     production_countries: {
       name: string;
     }[];
+    // cast: {
+    //   id: number;
+    //   name: string;
+    // }[];
   }
 
 //MovieImage interface
@@ -55,6 +77,10 @@ export interface BaseMovie {
       iso_3166_1: string;
       name: string;
     }[];
+    // cast: {
+    //   iso_3166_1: string;
+    //   name: string;
+    // }
   }
   
 //live movie data
@@ -62,16 +88,43 @@ export interface BaseMovie {
     genre_ids: number[];
   }
 
+  export interface ListedTVSeries extends BaseSeries {
+    genre_ids: number[];
+  }
   export type FilterOption = "title" | "genre";
 
   export interface MovieListPageTemplateProps {
     movies: ListedMovie[];
     title: string;
-    page: string;
-    pageSetter: string;
     action: (m: ListedMovie) => React.ReactNode;
   }
 
+  export interface SeriesListPageTemplateProps {
+    shows: ListedTVSeries[];
+    title: string;
+    // currentpage: number;
+    // totalpage: number;
+    // onPrevPage: () => void;
+    // onNextPage: () => void;
+    actionSeries: (m: ListedTVSeries) => React.ReactNode;
+  }
+
+  export interface BaseTVSeries {
+    backdrop_path: string | null;
+    first_air_date: string;
+    genre_ids?: number[];
+    id: number;
+    name: string;
+    origin_country: string[];
+    original_languages: string
+    original_name:string;
+    overview:string;
+    popularity: number;
+    poster_path?: string | null;
+    vote_average: number;
+    vote_count: number;
+    favourite?: boolean;
+  }
   export interface Review{
     id: string;
     content: string,
@@ -101,4 +154,11 @@ export interface BaseMovie {
     total_pages: number;
     total_results: number;
     results: ListedMovie[];
+  }
+
+  interface DiscoverTVSeries {
+    page: number;	
+    total_pages: number;
+    total_results: number;
+    results: ListedTVSeries[];
   }

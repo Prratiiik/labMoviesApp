@@ -1,6 +1,6 @@
-export const getMovies = (page: any) => {
+export const getMovies = () => {
   return fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
   ).then((response) => {
     if (!response.ok)
       throw new Error(`Unable to fetch movies. Response status: ${response.status}`);
@@ -10,105 +10,128 @@ export const getMovies = (page: any) => {
       throw error
     });
 };
-  
-  // export const getMovie = ( id : string) => {
-  //   return fetch(
-  //     `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
-  //   ).then(res => res.json());
-  // };
-  export const getMovie = (id: string) => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to get movie data. Response status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
-  };
 
-  // export const getGenres = () => {
-  //   return fetch(
-  //     "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-  //       import.meta.env.VITE_TMDB_KEY +
-  //       "&language=en-US"
-  //   )
-  //     .then(res => res.json())
-  //     .then(json => json.genres);
-  // };
-
-  export const getGenres = () => {
-    return fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=" + import.meta.env.VITE_TMDB_KEY + "&language=en-US"
-    ).then( (response) => {
-      if (!response.ok)
-        throw new Error(`Unable to fetch genres. Response status: ${response.status}`);
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
-  };
-  
-  //  export const getMovieImages = ( id : string | number) => {
-  //   return fetch(
-  //     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((json) => json.posters);
-  // };
-
-  export const getMovieImages = (id: string | number) => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error("failed to fetch images");
-      }
-      return response.json();
-    }).then((json) => json.posters)
-      .catch((error) => {
-        throw error
-      });
-  };
-
-  export const getMovieReviews = (id: string | number) => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_KEY}`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        // console.log(json.results);
-        return json.results;
-      });
-  };
-
-
-export const getUpcomingMovies = (page: any) => {
-  console.log({page})
+// export const getMovie = ( id : string) => {
+//   return fetch(
+//     `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
+//   ).then(res => res.json());
+// };
+export const getMovie = (id: string) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&page=${Number(page)}`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
   ).then((response) => {
-  if (!response.ok)
-    throw new Error(`Unable to fetch movies. Response status: ${response.status}`);
-  return response.json();
-})
-  .catch((error) => {
-    throw error
-  });
+    if (!response.ok) {
+      throw new Error(`Failed to get movie data. Response status: ${response.status}`);
+    }
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
 };
 
-export const getRecommendedMovies = (id: string | number) =>
-  fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`
-).then((response) => {
-  if (!response.ok) {
-    throw new Error("Unable to fetch movies.Response status: ${response.status}");
-  }
-  return response.json();
-}).then((json) => json.posters)
-  .catch((error) => {
-    throw error
-  });
+// export const getGenres = () => {
+//   return fetch(
+//     "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
+//       import.meta.env.VITE_TMDB_KEY +
+//       "&language=en-US"
+//   )
+//     .then(res => res.json())
+//     .then(json => json.genres);
+// };
+
+export const getGenres = () => {
+  return fetch(
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=" + import.meta.env.VITE_TMDB_KEY + "&language=en-US"
+  ).then((response) => {
+    if (!response.ok)
+      throw new Error(`Unable to fetch genres. Response status: ${response.status}`);
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
+};
+
+//  export const getMovieImages = ( id : string | number) => {
+//   return fetch(
+//     `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
+//   )
+//     .then((res) => res.json())
+//     .then((json) => json.posters);
+// };
+
+export const getMovieImages = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error("failed to fetch images");
+    }
+    return response.json();
+  }).then((json) => json.posters)
+    .catch((error) => {
+      throw error
+    });
+};
+
+export const getMovieReviews = (id: string | number) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${import.meta.env.VITE_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      // console.log(json.results);
+      return json.results;
+    });
+};
+
+
+export const getUpcomingMovies = () => {
+  return fetch (
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${
+      import.meta.env.VITE_TMDB_KEY
+    }&language=en-US&include_adult=false&page=1`
+  )
+  .then((response) => {
+    if (!response.ok)
+      throw new Error(`Unable to fetch Upcoming movies. Response status: ${response.status}`);
+    return response.json();
+  })
+    .catch((error) => {
+      throw error
+    });
+};
+   
+
+  // export const getMovieCast = async (id: string | number) => {
+  //   try {
+  //     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_KEY}`);
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch movie cast data');
+  //     }
+  //     const data = await response.json();
+  //     return data.cast;
+  //   } catch (error) {
+  //     throw error; // Rethrow the error for the caller to handle
+  //   }
+  // };
+   
+
+  export const getSeries = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${
+        import.meta.env.VITE_TMDB_KEY
+      }&language=en-US&include_adult=false&include_video=false&page=1`
+    )
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(
+            `Unable to fetch tv shows. Response status: ${response.status}`
+          );
+        return response.json();
+      })
+      .catch((error) => {
+        throw error;
+      });
+};

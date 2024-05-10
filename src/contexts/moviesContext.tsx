@@ -1,40 +1,39 @@
 import React, { useState } from "react";
-import { ListedMovie, MovieT, Review } from "../types/interface";
+import { ListedTVSeries, ListedMovie, MovieT, Review } from "../types/interface";
 
 interface MovieContextInterface {
     favourites: number[];
     mustWatch: number[];
+    favouriteShows: number[];
     addToFavourites: ((movie: ListedMovie) => void);
     addTomustWatch: ((movie: ListedMovie) => void);
     removeFromFavourites: ((movie: ListedMovie) => void);
     addReview: ((movie: MovieT, review: Review) => void);  // NEW
-    pageMovies: 1;
-    setPageMovies : 1;
-    pageUpcomingMovies: ()=>{};
-    setPageUpcomingMovies: ()=>{};
+    addToFavouriteShows: (show: ListedTVSeries) => void;
+    removeFromFavouriteShows: (show: ListedTVSeries) => void;
 }
 
-// const initialContextState: MovieContextInterface = {
-//     favourites: [],
-//     mustWatch: [],
-//     addToFavourites: (movie) => {movie.id },
-//     addTomustWatch: (movie) => {movie.id },
-//     removeFromFavourites: (movie: ListedMovie) => { movie.id},
-//     addReview: (movie, review) => { movie.id, review},  // NEW
-//     pageMovies: 1,
-//     setPageMovies : (num) => {num},
-//     pageUpcomingMovies: page,
-//     setPageUpcomingMovies: 1,
-// };
+const initialContextState: MovieContextInterface = {
+    favourites: [],
+    mustWatch: [],
+    favouriteShows: [],
+    addToFavourites: (movie) => {movie.id },
+    addTomustWatch: (movie) => {movie.id },
+    removeFromFavourites: (movie) => { movie.id},
+    addReview: (movie, review) => { movie.id, review},  // NEW
+    addToFavouriteShows: (show) => {show.id },
+    removeFromFavouriteShows: (show) => { show.id},
+};
 
-export const MoviesContext = React.createContext<any>(null);;
+export const MoviesContext =
+  React.createContext<MovieContextInterface>(initialContextState);
+  
 
 const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
     const [myReviews, setMyReviews] = useState<Review[]>( [] )  // NEW
     const [favourites, setFavourites] = useState<number[]>([]);
+    const [favouriteShows, setFavouriteShows] = useState<number[]>([]);
     const [mustWatch, setmustWatch] = useState<number[]>([]);
-    const [pageMovies, setPageMovies] = useState(1);
-    const [pageUpcomingMovies, setPageUpcomingMovies] = useState(1);
 
     const addToFavourites = (movie: ListedMovie) => {
         let updatedFavourites = [...favourites];
@@ -43,7 +42,15 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
         }
         setFavourites(updatedFavourites);
     };
-    
+
+    const addToFavouriteShows = (show: ListedTVSeries) => {
+        let updatedFavourites = [...favouriteShows];
+        if (!favourites.includes(show.id)) {
+            updatedFavourites.push(show.id);
+        }
+        setFavouriteShows(updatedFavourites);
+    };
+
     const addTomustWatch= (movie: ListedMovie) => {
         let updatedmustWatch = [...mustWatch];
         if (!mustWatch.includes(movie.id)) {
@@ -56,6 +63,9 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
     // We will use this function in a later section
     const removeFromFavourites = (movie: ListedMovie) => {
         setFavourites(favourites.filter((mId) => mId !== movie.id));
+    };
+    const removeFromFavouriteShows = (show: ListedTVSeries) => {
+        setFavouriteShows(favouriteShows.filter((mId) => mId !== show.id));
     };
     const addReview = (movie: MovieT, review: Review) => {   // NEW
         setMyReviews( {...myReviews, [movie.id]: review } )
@@ -71,10 +81,9 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
                 addReview,    // NEW
                 mustWatch,
                 addTomustWatch,
-                pageMovies,
-                setPageMovies,
-                pageUpcomingMovies,
-                setPageUpcomingMovies,
+                addToFavouriteShows,
+                favouriteShows,
+                removeFromFavouriteShows,
             }}
         >
             {props.children}

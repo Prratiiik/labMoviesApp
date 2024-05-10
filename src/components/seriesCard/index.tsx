@@ -10,14 +10,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
-//import IconButton from "@mui/material/IconButton";
 import img from '../../images/film-poster-placeholder.png';
-import { BaseMovie } from "../../types/interface"; 
 import { Link } from "react-router-dom";
-import {MouseEvent} from "react";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { ListedMovie } from "../../types/interface";
+import { ListedTVSeries } from "../../types/interface";
 import { Navigate } from "react-router-dom";
 
 
@@ -28,24 +25,24 @@ const styles = {
     backgroundColor: "rgb(255, 0, 0)",
   },
 };
-interface MovieListProps {
-    movie:ListedMovie,
-    action: (m: ListedMovie) => React.ReactNode;
+interface SeriesListProps {
+    series:ListedTVSeries,
+    action: (s: ListedTVSeries) => React.ReactNode;
   }
   
   
-  const MovieCard: React.FC<MovieListProps> = (props) => {
-    const movie = {...props.movie, favourite: false};
+  const SeriesCard: React.FC<SeriesListProps> = (props) => {
+    const series = {...props.series, favourite: false};
      
-    const { favourites } = useContext(MoviesContext);
+    const { favouriteShows } = useContext(MoviesContext);
     const openDetails = (e: any ) => {
         if (e.target instanceof SVGElement) return;
-        <Navigate to ={`/movies/${movie.id}`} replace={true} />
+        <Navigate to ={`/movies/${series.id}`} replace={true} />
       };
     
-    if (favourites.find((id: any) => id === movie.id)) 
-      movie.favourite = true;
-     {props.action(movie)}
+    if (favouriteShows.find((id: any) => id === series.id)) 
+      series.favourite = true;
+     {props.action(series)}
 
     //  onClick={openDetails}
   return (
@@ -53,7 +50,7 @@ interface MovieListProps {
      >
       <CardHeader
         avatar={
-          movie.favourite ? (
+          series.favourite ? (
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
@@ -61,15 +58,15 @@ interface MovieListProps {
         }
         title={
           <Typography variant="h5" component="p">
-            {movie.title}{" "}
+            {series.title}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={styles.media}
         image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+          series.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${series.poster_path}`
             : img
         }
       />
@@ -78,20 +75,20 @@ interface MovieListProps {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {movie.release_date}
+              {series.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
+              {"  "} {series.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-           {props.action(movie)}
-          <Link to={`/movies/${movie.id}`}>
+           {props.action(series)}
+          <Link to={`/series/${series.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
@@ -101,4 +98,4 @@ interface MovieListProps {
   );
 }
 
-export default MovieCard;
+export default SeriesCard;

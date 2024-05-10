@@ -26,10 +26,9 @@ const genreFiltering = {
 
 const HomePage: React.FC = (props) => {
   // const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getMovies);
-  const { pageMovies, setPageMovies } = useContext(MoviesContext);
   const { isLoading, isError, error, data, isFetching } = useQuery(
-    ["discover", pageMovies],
-    () => getMovies(pageMovies),
+    ["discover"],
+    () => getMovies(),
     {
       keepPreviousData: true,
     }
@@ -67,7 +66,7 @@ const HomePage: React.FC = (props) => {
   // localStorage.setItem("favourites", JSON.stringify(favourites));
   // const addToFavourites = (movieId: number) => true;
 
-  return (
+  return ( 
     <>
       <PageTemplate
       title="Discover Movies"
@@ -75,8 +74,6 @@ const HomePage: React.FC = (props) => {
       action={(movie: ListedMovie) => {
         return <AddToFavouritesIcon {...movie} />
       }}
-      page={pageMovies}
-      pageSetter={setPageMovies}
       />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
