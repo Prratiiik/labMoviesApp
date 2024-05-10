@@ -7,8 +7,8 @@ import Spinner from "../components/spinner";
 import AddToFavouriteSeriesIcon from '../components/cardIcons/addToFavouritesSeries';
 
 const TVSeriesPage: React.FC = () => {
-  const { data, error, isLoading, isError } = useQuery<DiscoverTVSeries, Error>("discover", getSeries);
- 
+  const { data, error, isLoading, isError } = useQuery<DiscoverTVSeries, Error>("TVSeries", getSeries);
+  const series = data ? data.results : [];
   if (isLoading) {
     return <Spinner />;
   }
@@ -19,8 +19,6 @@ const TVSeriesPage: React.FC = () => {
       </h1>;
   }
 
-  const series = data ? data.results : [];
-  
   return (
     <>
       <SeriesTemplate

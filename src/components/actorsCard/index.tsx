@@ -14,7 +14,7 @@ import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { ListedTVSeries } from "../../types/interface";
+import { ListedActors } from "../../types/interface";
 import { Navigate } from "react-router-dom";
 
 
@@ -25,24 +25,24 @@ const styles = {
     backgroundColor: "rgb(255, 0, 0)",
   },
 };
-interface SeriesListProps {
-    series:ListedTVSeries,
-    action: (s: ListedTVSeries) => React.ReactNode;
+interface ActorsListProps {
+    actors:ListedActors,
+    action: (s: ListedActors) => React.ReactNode;
   }
   
   
-  const SeriesCard: React.FC<SeriesListProps> = (props) => {
-    const series = {...props.series, favourite: false};
+  const ActorsCard: React.FC<ActorsListProps> = (props) => {
+    const actors = {...props.actors, favourite: false};
      
-    const { favouriteShows } = useContext(MoviesContext);
+    const { favouriteActors } = useContext(MoviesContext);
     const openDetails = (e: any ) => {
         if (e.target instanceof SVGElement) return;
-        <Navigate to ={`/tvseries/${series.id}`} replace={true} />
+        <Navigate to ={`/movies/${actors.id}`} replace={true} />
       };
     
-    if (favouriteShows.find((id: any) => id === series.id)) 
-      series.favourite = true;
-     {props.action(series)}
+    if (favouriteActors.find((id: any) => id === actors.id)) 
+      actors.favourite = true;
+     {props.action(actors)}
 
     //  onClick={openDetails}
   return (
@@ -50,7 +50,7 @@ interface SeriesListProps {
      >
       <CardHeader
         avatar={
-          series.favourite ? (
+          actors.favourite ? (
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
@@ -58,15 +58,15 @@ interface SeriesListProps {
         }
         title={
           <Typography variant="h5" component="p">
-            {series.name}{" "}
+            {actors.name}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={styles.media}
         image={
-          series.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${series.poster_path}`
+          actors.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${actors.profile_path}`
             : img
         }
       />
@@ -75,20 +75,20 @@ interface SeriesListProps {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {series.first_air_date}
+              {actors.known_for_department}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {series.vote_average}{" "}
+              {"  "} {actors.popularity }{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-           {props.action(series)}
-          <Link to={`/tvseries/${series.id}`}>
+           {props.action(actors)}
+          <Link to={`/actors/${actors.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
@@ -98,4 +98,4 @@ interface SeriesListProps {
   );
 }
 
-export default SeriesCard;
+export default ActorsCard;

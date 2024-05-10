@@ -65,7 +65,7 @@ const HomePage: React.FC = (props) => {
   // const favourites = movies.filter(m => m.favourite)
   // localStorage.setItem("favourites", JSON.stringify(favourites));
   // const addToFavourites = (movieId: number) => true;
-
+console.log(displayedMovies)
   return ( 
     <>
       <PageTemplate
