@@ -41,7 +41,6 @@ const SeriesHeader: React.FC<BaseSeries> = (props) => {
           <HomeIcon color="primary" fontSize="large" />
         </a>
         <br />
-        <span>{`${props.popularity}`} </span>
       </Typography>
       <IconButton aria-label="go forward">
         <ArrowForwardIcon color="primary" fontSize="large" />

@@ -34,17 +34,10 @@ const styles = {
 
 const MovieDetails: React.FC<MovieT> = (props) => {
   const movie = props;
-  const [drawerOpen, setDrawerOpen] = useState(false); // New
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <>
-      {/* <Typography variant="h5" component="h3">
-                Overview
-            </Typography>
-
-            <Typography variant="h6" component="p">
-                {props.overview}
-            </Typography> */}
       <Typography variant="h6" component="h6">
         Overview
       </Typography>

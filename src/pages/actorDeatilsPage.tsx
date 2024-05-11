@@ -7,10 +7,9 @@ import Spinner from '../components/spinner';
 import { getOneActors } from "../api/tmdb-api";
 import TemplateActorPage from "../components/templateActorPage";
 
-
 const ActorDetailsPage: React.FC= () => {
   const { id } = useParams();
-  const { data: actors, error, isLoading, isError } = useQuery<BaseActors, Error>(
+  const { data: actors, error, isLoading, isError } = useQuery<BaseActors, Error>  (
     ["actors", id],
     ()=> getOneActors(id||"")
   );
@@ -32,7 +31,7 @@ const ActorDetailsPage: React.FC= () => {
         </TemplateActorPage>
       </>
     ) : (
-      <p>Waiting for series details</p>
+      <p>Waiting for actors details</p>
     )}
     </>
   );

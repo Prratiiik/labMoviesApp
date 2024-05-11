@@ -37,7 +37,7 @@ interface ActorsListProps {
     const { favouriteActors } = useContext(MoviesContext);
     const openDetails = (e: any ) => {
         if (e.target instanceof SVGElement) return;
-        <Navigate to ={`/movies/${actors.id}`} replace={true} />
+        <Navigate to ={`/actors/${actors.id}`} replace={true} />
       };
     
     if (favouriteActors.find((id: any) => id === actors.id)) 
@@ -70,7 +70,7 @@ interface ActorsListProps {
             : img
         }
       />
-      <CardContent>
+      {/* <CardContent>
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
@@ -85,12 +85,12 @@ interface ActorsListProps {
             </Typography>
           </Grid>
         </Grid>
-      </CardContent>
+      </CardContent> */}
       <CardActions disableSpacing>
            {props.action(actors)}
           <Link to={`/actors/${actors.id}`}>
           <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+             Info
           </Button>
           </Link>
        </CardActions>

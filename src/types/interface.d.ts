@@ -224,6 +224,13 @@ export interface BaseMovie {
     results: ListedMovie[];
   }
 
+  interface PopularMovies {
+    page: number;
+    total_pages: number;
+    total_results: number;
+    results: ListedMovie[];
+  }
+
   interface DiscoverTVSeries {
     page: number;	
     total_pages: number;

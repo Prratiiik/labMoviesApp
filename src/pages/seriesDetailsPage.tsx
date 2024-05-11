@@ -9,10 +9,6 @@ import TemplateSeriesPage from "../components/templateSeriesPage";
 
 const SeriesDetailsPage: React.FC= () => {
   const { id } = useParams();
-  // const { data: series, error, isLoading, isError } = useQuery<MovieT, Error>(
-  //   ["series", id],
-  //   ()=> getSeries()
-  // );
   const { data: series, error, isLoading, isError } = useQuery<BaseSeries, Error>(
     ["series", id],
     ()=> getOneSeries(id||"")

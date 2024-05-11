@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import ActorTemplate from "../components/templateActorListPage"
 import { getActors } from "../api/tmdb-api";
 import { DiscoverActors, ListedActors } from "../types/interface";
@@ -26,8 +26,8 @@ const ActorsPage: React.FC = () => {
       <ActorTemplate
       title="Actors"
       actors={actors}
-      actionActors={(series: ListedActors) => {
-      return <AddToFavouriteActors {...series} />
+      actionActors={(actors: ListedActors) => {
+      return <AddToFavouriteActors {...actors} />
       }}
       />
     </>
