@@ -16,6 +16,9 @@ import ActorsPage from "./pages/actorPage";
 import SeriesDetailsPage from "./pages/seriesDetailsPage";
 import ActorDetailsPage from "./pages/actorDeatilsPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 // const App = () => {
 //   return (
@@ -32,11 +35,33 @@ import PopularMoviesPage from "./pages/popularMoviesPage";
 //     </BrowserRouter>
 //   );
 // };
+const [mode, setMode] = useState('light');
 
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  );
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <SiteHeader />
           <MoviesContextProvider>
             <Routes>
@@ -55,6 +80,8 @@ const App = () => {
            
             </Routes>
         </MoviesContextProvider>
+        </ThemeProvider>
+        </ColorModeContext.Provider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
