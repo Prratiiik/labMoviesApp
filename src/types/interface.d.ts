@@ -68,7 +68,11 @@ export interface BaseMovie {
   //Assembling the Home page.
   export interface BaseMovieList { 
     movies: BaseMovie[];
-  }   
+  }  
+  
+  export interface BaseSeriesList { 
+    series: BaseSeries[];
+  } 
 
   //Extend the Base Movie interface
   export interface MovieT extends BaseMovie {
@@ -100,6 +104,16 @@ export interface BaseMovie {
   }
 //MovieImage interface
   export interface MovieImage {
+    file_path: string;
+    aspect_ratio?: number; //some props are optional...
+    height?: number;
+    iso_639_1?: string;
+    vote_average?: number;
+    vote_count?: number;
+    width?: number;
+  }
+
+  export interface SeriesImage {
     file_path: string;
     aspect_ratio?: number; //some props are optional...
     height?: number;
@@ -243,6 +257,13 @@ export interface BaseMovie {
     total_pages: number;
     total_results: number;
     results: ListedMovie[];
+  }
+
+  interface SimilarTVSeries {
+    page: number;	
+    total_pages: number;
+    total_results: number;
+    results: ListedTVSeries[];
   }
   interface DiscoverActors {
     page: number;	

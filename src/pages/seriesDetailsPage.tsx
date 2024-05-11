@@ -1,11 +1,12 @@
 import React, {useEffect} from "react"; // replace existing react import
 import { useParams } from "react-router-dom";
 import SeriesDetails from "../components/seriesDetails";
-import { BaseSeries, MovieT} from "../types/interface";
+import { BaseSeries,SimilarTVSeries, MovieT} from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
-import { getOneSeries, getSeries } from "../api/tmdb-api";
+import { getOneSeries, getSimilarSeries } from "../api/tmdb-api";
 import TemplateSeriesPage from "../components/templateSeriesPage";
+import SimilarSeries from "../components/similarSeries";
 
 const SeriesDetailsPage: React.FC= () => {
   const { id } = useParams();
@@ -13,7 +14,13 @@ const SeriesDetailsPage: React.FC= () => {
     ["series", id],
     ()=> getOneSeries(id||"")
   );
-  if (isLoading) {
+
+  const { data: similarSeries, error: similarSeriesError, isLoading: similarSeriesLoading, isError: similarSeriesIsError } = useQuery<SimilarTVSeries, Error>(
+    ["similarSeries", id],
+    () => getSimilarSeries(id || "")
+  );
+
+  if (isLoading || similarSeriesLoading) {
     return <Spinner />;
   }
 
@@ -24,10 +31,10 @@ const SeriesDetailsPage: React.FC= () => {
   return (
     <>
       {series ? (
-        <>
-          
+        <> 
           <TemplateSeriesPage series={series as BaseSeries}> 
           <SeriesDetails {...series as BaseSeries} />
+          <SimilarSeries series={similarSeries?.results || []} />
         </TemplateSeriesPage>
       </>
     ) : (

@@ -1,10 +1,9 @@
 import React, {ReactNode} from "react"; //{ useState, useEffect } redundant
-import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getMovieImages, getSeriesImages } from "../../api/tmdb-api";
-import { BaseSeries, MovieImage, MovieT } from "../../types/interface";
+import { getSeriesImages } from "../../api/tmdb-api";
+import { BaseSeries, MovieT, SeriesImage } from "../../types/interface";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
 import SeriesHeader from "../headerSeries";
@@ -33,7 +32,7 @@ interface TemplateSeriesPageProps {
 
 const TemplateSeriesPage: React.FC<TemplateSeriesPageProps> = (props) => {
     const { series, children } = props;
-    const { data, error, isLoading, isError } = useQuery<MovieImage[], Error>(
+    const { data, error, isLoading, isError } = useQuery<SeriesImage[], Error>(
         ["images", series.id],
         () => getSeriesImages(series.id)
     );
@@ -46,7 +45,7 @@ const TemplateSeriesPage: React.FC<TemplateSeriesPageProps> = (props) => {
         return <h1>{error.message}</h1>;
     }
 
-    const images = data as MovieImage[];
+    const images = data as SeriesImage[];
 
     return (
         <>
@@ -56,7 +55,7 @@ const TemplateSeriesPage: React.FC<TemplateSeriesPageProps> = (props) => {
                 <Grid item xs={3}>
                     <div style={styles.scrollableContainer}>
                         <ImageList cols={1}>
-                            {images.map((image: MovieImage) => (
+                            {images.map((image: SeriesImage) => (
                                 <ImageListItem
                                     key={image.file_path}
                                     sx={styles.gridListTile}
