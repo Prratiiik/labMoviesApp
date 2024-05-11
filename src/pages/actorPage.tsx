@@ -4,11 +4,11 @@ import { getActors } from "../api/tmdb-api";
 import { DiscoverActors, ListedActors } from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToFavouriteActors from '../components/cardIcons/addToFavouritesActor';
+import AddToFavouriteActorsIcon from '../components/cardIcons/addToFavouritesActor';
 
 const ActorsPage: React.FC = () => {
   const { data, error, isLoading, isError } = useQuery<DiscoverActors, Error>("Actors", getActors);
- 
+  const actors = data ? data.results : [];
   if (isLoading) {
     return <Spinner />;
   }
@@ -18,8 +18,6 @@ const ActorsPage: React.FC = () => {
       {error.message}
       </h1>;
   }
-
-  const actors = data ? data.results : [];
   
   return (
     <>
@@ -27,7 +25,7 @@ const ActorsPage: React.FC = () => {
       title="Actors"
       actors={actors}
       actionActors={(actors: ListedActors) => {
-      return <AddToFavouriteActors {...actors} />
+      return <AddToFavouriteActorsIcon {...actors} />
       }}
       />
     </>

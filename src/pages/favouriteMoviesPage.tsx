@@ -83,7 +83,8 @@ const FavouriteMoviesPage: React.FC = () => {
               <WriteReview {...movie} />
             </>
           );
-        } } page={""} pageSetter={""}      />
+        }}
+      />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}

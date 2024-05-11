@@ -28,14 +28,14 @@ const styles = {
   },
 };
 
-interface FilterMoviesCardProps {
+interface FilterSeriesCardProps {
     onUserInput: (f: FilterOption, s: string)  => void; // Add this line
     titleFilter: string;
     genreFilter: string;
   }
 
     
-         const FilterMoviesCard: React.FC<FilterMoviesCardProps> = (props) => {
+         const FilterSeriesCard: React.FC<FilterSeriesCardProps> = (props) => {
           const { data, error, isLoading, isError } = useQuery<GenreData, Error>("genres", getGenres);
         
           if (isLoading) {
@@ -69,7 +69,7 @@ interface FilterMoviesCardProps {
         <CardContent>
         <Typography variant="h5" component="h1">
           <FilterAltIcon fontSize="large" />
-          Filter the movies.
+          Filter the series.
         </Typography>
         <TextField
          sx={styles.formControl}
@@ -103,7 +103,7 @@ interface FilterMoviesCardProps {
         <CardContent>
           <Typography variant="h5" component="h1">
             <SortIcon fontSize="large" />
-            Sort the movies.
+            Sort the Series.
           </Typography>
         </CardContent>
       </Card>
@@ -111,4 +111,4 @@ interface FilterMoviesCardProps {
   );
 }
 
-export default FilterMoviesCard;
+export default FilterSeriesCard;
