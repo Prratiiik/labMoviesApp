@@ -10,7 +10,6 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
-// import MovieCastList from "../movieCast";
 
 const styles = {
   chipSet: {
@@ -67,22 +66,6 @@ const MovieDetails: React.FC<MovieT> = (props) => {
         />
         <Chip label={`Released: ${props.release_date}`} />
       </Paper>
-      {/* <Paper>
-        <Typography variant="h6" component="h6">
-          Cast
-        </Typography>
-        <MovieCastList movie={movie} />
-      </Paper> */}
-      {/* <Paper component="ul" sx={styles.chipSet}>
-        <li>
-          <Chip label="Cast" sx={styles.chipLabel} color="primary" />
-        </li>
-        {props.cast.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} />
-          </li>
-        ))}
-      </Paper> */}
       <Fab
         color="secondary"
         variant="extended"

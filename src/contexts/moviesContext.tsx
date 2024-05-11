@@ -9,7 +9,7 @@ interface MovieContextInterface {
     addToFavourites: ((movie: ListedMovie) => void);
     addTomustWatch: ((movie: ListedMovie) => void);
     removeFromFavourites: ((movie: ListedMovie) => void);
-    addReview: ((movie: MovieT, review: Review) => void);  // NEW
+    addReview: ((movie: MovieT, review: Review) => void); 
     addToFavouriteShows: (show: ListedTVSeries) => void;
     removeFromFavouriteShows: (show: ListedTVSeries) => void;
     addToFavouriteActors: (actors: ListedActors) => void;
@@ -24,7 +24,7 @@ const initialContextState: MovieContextInterface = {
     addToFavourites: (movie) => {movie.id },
     addTomustWatch: (movie) => {movie.id },
     removeFromFavourites: (movie) => { movie.id},
-    addReview: (movie, review) => { movie.id, review},  // NEW
+    addReview: (movie, review) => { movie.id, review}, 
     addToFavouriteShows: (show) => {show.id },
     removeFromFavouriteShows: (show) => { show.id},
     addToFavouriteActors: (actors) => { actors.id},
@@ -36,7 +36,7 @@ export const MoviesContext =
   
 
 const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
-    const [myReviews, setMyReviews] = useState<Review[]>( [] )  // NEW
+    const [myReviews, setMyReviews] = useState<Review[]>( [] )  
     const [favourites, setFavourites] = useState<number[]>([]);
     const [favouriteShows, setFavouriteShows] = useState<number[]>([]);
     const [favouriteActors, setFavouriteActors] = useState<number[]>([]);
@@ -75,7 +75,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
         console.log("added to must watch")
         console.log(mustWatch)
     };
-    // We will use this function in a later section
+   
     const removeFromFavourites = (movie: ListedMovie) => {
         setFavourites(favourites.filter((mId) => mId !== movie.id));
     };
@@ -85,7 +85,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
     const removeFromFavouriteActors = (actor: ListedActors) => {
         setFavouriteActors(favouriteActors.filter((mId) => mId !== actor.id));
     };
-    const addReview = (movie: MovieT, review: Review) => {   // NEW
+    const addReview = (movie: MovieT, review: Review) => {   
         setMyReviews( {...myReviews, [movie.id]: review } )
       };
 
@@ -96,7 +96,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = (props) => {
                 favourites,
                 addToFavourites,
                 removeFromFavourites,
-                addReview,    // NEW
+                addReview,   
                 mustWatch,
                 addTomustWatch,
                 addToFavouriteShows,

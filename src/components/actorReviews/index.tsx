@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { getOneActors } from "../../api/tmdb-api";
 import { excerpt } from "../../utils";
-import { MovieT, Review } from "../../types/interface"; // Import the MovieT type from the appropriate location
+import { MovieT, Review } from "../../types/interface";
 
 const styles = {
     table: {
@@ -17,7 +17,7 @@ const styles = {
     },
 };
 
-const ActorReviews: React.FC<MovieT> = (props) => { // Use the MovieT type in the function signature
+const ActorReviews: React.FC<MovieT> = (props) => { 
     const [reviews, setReviews] = useState([]);
 
     const actor = props;
@@ -25,7 +25,6 @@ const ActorReviews: React.FC<MovieT> = (props) => { // Use the MovieT type in th
         getOneActors(actor.id).then((reviews) => {
             setReviews(reviews);
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

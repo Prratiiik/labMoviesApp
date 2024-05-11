@@ -65,7 +65,7 @@ export interface BaseMovie {
     vote_average: number;
     vote_count: number;
   }
-  //Assembling the Home page.
+
   export interface BaseMovieList { 
     movies: BaseMovie[];
   }  
@@ -74,7 +74,6 @@ export interface BaseMovie {
     series: BaseSeries[];
   } 
 
-  //Extend the Base Movie interface
   export interface MovieT extends BaseMovie {
     genres: {
       id: number;
@@ -83,10 +82,7 @@ export interface BaseMovie {
     production_countries: {
       name: string;
     }[];
-    // cast: {
-    //   id: number;
-    //   name: string;
-    // }[];
+    
   }
 
   export interface MovieT extends BaseSeries {
@@ -97,15 +93,12 @@ export interface BaseMovie {
     production_countries: {
       name: string;
     }[];
-    // cast: {
-    //   id: number;
-    //   name: string;
-    // }[];
+    
   }
 //MovieImage interface
   export interface MovieImage {
     file_path: string;
-    aspect_ratio?: number; //some props are optional...
+    aspect_ratio?: number; 
     height?: number;
     iso_639_1?: string;
     vote_average?: number;
@@ -115,7 +108,7 @@ export interface BaseMovie {
 
   export interface SeriesImage {
     file_path: string;
-    aspect_ratio?: number; //some props are optional...
+    aspect_ratio?: number; 
     height?: number;
     iso_639_1?: string;
     vote_average?: number;
@@ -133,10 +126,7 @@ export interface BaseMovie {
       iso_3166_1: string;
       name: string;
     }[];
-    // cast: {
-    //   iso_3166_1: string;
-    //   name: string;
-    // }
+    
   }
   
 //live movie data
@@ -161,10 +151,6 @@ export interface BaseMovie {
   export interface SeriesListPageTemplateProps {
     shows: ListedTVSeries[];
     title: string;
-    // currentpage: number;
-    // totalpage: number;
-    // onPrevPage: () => void;
-    // onNextPage: () => void;
     actionSeries: (m: ListedTVSeries) => React.ReactNode;
   }
 

@@ -1,23 +1,29 @@
-import React, {useEffect} from "react"; // replace existing react import
+import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
-import { MovieT, Similar} from "../types/interface";
+import { MovieT, Similar } from "../types/interface";
 import PageTemplate from "../components/templateMoviePage";
-import { getMovie, getSimilarMovies } from '../api/tmdb-api';
+import { getMovie, getSimilarMovies } from "../api/tmdb-api";
 import SimilarMovies from "../components/similarMovies";
 import { useQuery } from "react-query";
-import Spinner from '../components/spinner';
+import Spinner from "../components/spinner";
 
-const MovieDetailsPage: React.FC= () => {
+const MovieDetailsPage: React.FC = () => {
   const { id } = useParams();
-  const { data: movie, error, isLoading, isError } = useQuery<MovieT, Error>(
-    ["movie", id],
-    ()=> getMovie(id||"")
-  );
+  const {
+    data: movie,
+    error,
+    isLoading,
+    isError,
+  } = useQuery<MovieT, Error>(["movie", id], () => getMovie(id || ""));
 
-  const { data: similarMovies, error: similarMoviesError, isLoading: similarMoviesLoading, isError: similarMoviesIsError } = useQuery<Similar, Error>(
-    ["similarMovies", id],
-    () => getSimilarMovies(id|| "")
+  const {
+    data: similarMovies,
+    error: similarMoviesError,
+    isLoading: similarMoviesLoading,
+    isError: similarMoviesIsError,
+  } = useQuery<Similar, Error>(["similarMovies", id], () =>
+    getSimilarMovies(id || "")
   );
 
   if (isLoading || similarMoviesLoading) {
@@ -32,14 +38,14 @@ const MovieDetailsPage: React.FC= () => {
     <>
       {movie ? (
         <>
-        <PageTemplate movie={movie as MovieT}> 
-          <MovieDetails {...movie as MovieT} />
-          <SimilarMovies movies={similarMovies?.results || []} />
-        </PageTemplate>
-      </>
-    ) : (
-      <p>Waiting for movie details</p>
-    )}
+          <PageTemplate movie={movie as MovieT}>
+            <MovieDetails {...(movie as MovieT)} />
+            <SimilarMovies movies={similarMovies?.results || []} />
+          </PageTemplate>
+        </>
+      ) : (
+        <p>Waiting for movie details</p>
+      )}
     </>
   );
 };

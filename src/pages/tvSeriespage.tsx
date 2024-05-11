@@ -1,10 +1,10 @@
-import React, {useContext} from "react";
-import SeriesTemplate from "../components/templateTVSeriesListPage"
+import React, { useContext } from "react";
+import SeriesTemplate from "../components/templateTVSeriesListPage";
 import { getSeries } from "../api/tmdb-api";
 import { DiscoverTVSeries, ListedTVSeries } from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
-import AddToFavouriteSeriesIcon from '../components/cardIcons/addToFavouritesSeries';
+import AddToFavouriteSeriesIcon from "../components/cardIcons/addToFavouritesSeries";
 import SeriesFilterUI, {
   titleFilter,
   genreFilter,
@@ -23,7 +23,10 @@ const genreFiltering = {
 };
 
 const TVSeriesPage: React.FC = () => {
-  const { data, error, isLoading, isError } = useQuery<DiscoverTVSeries, Error>("TVSeries", getSeries);
+  const { data, error, isLoading, isError } = useQuery<DiscoverTVSeries, Error>(
+    "TVSeries",
+    getSeries
+  );
   const series = data ? data.results : [];
   const { filterValues, setFilterValues, filterFunction } = useFiltering(
     [],
@@ -35,9 +38,7 @@ const TVSeriesPage: React.FC = () => {
   }
 
   if (isError) {
-    return <h1>
-      {error.message}
-      </h1>;
+    return <h1>{error.message}</h1>;
   }
 
   const displayedSeries = filterFunction(series);
@@ -53,11 +54,11 @@ const TVSeriesPage: React.FC = () => {
   return (
     <>
       <SeriesTemplate
-      title="TVSeries"
-      shows={displayedSeries}
-      actionSeries={(series: ListedTVSeries) => {
-      return <AddToFavouriteSeriesIcon {...series} />
-      }}
+        title="TVSeries"
+        shows={displayedSeries}
+        actionSeries={(series: ListedTVSeries) => {
+          return <AddToFavouriteSeriesIcon {...series} />;
+        }}
       />
       <SeriesFilterUI
         onFilterValuesChange={changeFilterValues}

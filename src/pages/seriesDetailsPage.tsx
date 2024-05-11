@@ -1,23 +1,29 @@
-import React, {useEffect} from "react"; // replace existing react import
+import React from "react";
 import { useParams } from "react-router-dom";
 import SeriesDetails from "../components/seriesDetails";
-import { BaseSeries,SimilarTVSeries, MovieT} from "../types/interface";
+import { BaseSeries, SimilarTVSeries } from "../types/interface";
 import { useQuery } from "react-query";
-import Spinner from '../components/spinner';
+import Spinner from "../components/spinner";
 import { getOneSeries, getSimilarSeries } from "../api/tmdb-api";
 import TemplateSeriesPage from "../components/templateSeriesPage";
 import SimilarSeries from "../components/similarSeries";
 
-const SeriesDetailsPage: React.FC= () => {
+const SeriesDetailsPage: React.FC = () => {
   const { id } = useParams();
-  const { data: series, error, isLoading, isError } = useQuery<BaseSeries, Error>(
-    ["series", id],
-    ()=> getOneSeries(id||"")
-  );
+  const {
+    data: series,
+    error,
+    isLoading,
+    isError,
+  } = useQuery<BaseSeries, Error>(["series", id], () => getOneSeries(id || ""));
 
-  const { data: similarSeries, error: similarSeriesError, isLoading: similarSeriesLoading, isError: similarSeriesIsError } = useQuery<SimilarTVSeries, Error>(
-    ["similarSeries", id],
-    () => getSimilarSeries(id || "")
+  const {
+    data: similarSeries,
+    error: similarSeriesError,
+    isLoading: similarSeriesLoading,
+    isError: similarSeriesIsError,
+  } = useQuery<SimilarTVSeries, Error>(["similarSeries", id], () =>
+    getSimilarSeries(id || "")
   );
 
   if (isLoading || similarSeriesLoading) {
@@ -31,15 +37,15 @@ const SeriesDetailsPage: React.FC= () => {
   return (
     <>
       {series ? (
-        <> 
-          <TemplateSeriesPage series={series as BaseSeries}> 
-          <SeriesDetails {...series as BaseSeries} />
-          <SimilarSeries series={similarSeries?.results || []} />
-        </TemplateSeriesPage>
-      </>
-    ) : (
-      <p>Waiting for series details</p>
-    )}
+        <>
+          <TemplateSeriesPage series={series as BaseSeries}>
+            <SeriesDetails {...(series as BaseSeries)} />
+            <SimilarSeries series={similarSeries?.results || []} />
+          </TemplateSeriesPage>
+        </>
+      ) : (
+        <p>Waiting for series details</p>
+      )}
     </>
   );
 };

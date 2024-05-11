@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
-import { BaseActors, MovieT } from "../../types/interface";
+import { BaseActors} from "../../types/interface";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Drawer from "@mui/material/Drawer";
-import ActorReviews from "../actorReviews";
 
 const styles = {
   chipSet: {

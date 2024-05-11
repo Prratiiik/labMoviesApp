@@ -13,8 +13,6 @@ import { MovieT, Review } from "../../types/interface";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
-
-
 const ReviewForm: React.FC<MovieT> = (props) => {
   const defaultValues = {
     defaultValues: {
@@ -23,7 +21,7 @@ const ReviewForm: React.FC<MovieT> = (props) => {
       agree: false,
       rating: 3,
       movieId: 0,
-    }
+    },
   };
 
   const {
@@ -36,8 +34,7 @@ const ReviewForm: React.FC<MovieT> = (props) => {
   const navigate = useNavigate();
   const context = useContext(MoviesContext);
   const [rating, setRating] = useState(3);
-  const [open, setOpen] = useState(false);  //NEW
-
+  const [open, setOpen] = useState(false);
 
   const handleRatingChange = (event: ChangeEvent<HTMLInputElement>) => {
     setRating(Number(event.target.value));
@@ -47,10 +44,8 @@ const ReviewForm: React.FC<MovieT> = (props) => {
     review.movieId = props.id;
     review.rating = rating;
     context.addReview(props, review);
-    setOpen(true); // NEW
-    // console.log(review);
+    setOpen(true);
   };
-
 
   const handleSnackClose = () => {
     setOpen(false);
@@ -58,21 +53,15 @@ const ReviewForm: React.FC<MovieT> = (props) => {
   };
 
   <Snackbar
-        sx={styles.snack}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={open}
-         onClose={handleSnackClose}
-      >
-        <Alert
-          severity="success"
-          variant="filled"
-          onClose={handleSnackClose}
-        >
-          <Typography variant="h4">
-            Thank you for submitting a review
-          </Typography>
-        </Alert>
-      </Snackbar>
+    sx={styles.snack}
+    anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    open={open}
+    onClose={handleSnackClose}
+  >
+    <Alert severity="success" variant="filled" onClose={handleSnackClose}>
+      <Typography variant="h4">Thank you for submitting a review</Typography>
+    </Alert>
+  </Snackbar>;
 
   return (
     <Box component="div" sx={styles.root}>
@@ -83,13 +72,9 @@ const ReviewForm: React.FC<MovieT> = (props) => {
         sx={styles.snack}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={open}
-         onClose={handleSnackClose}
+        onClose={handleSnackClose}
       >
-        <Alert
-          severity="success"
-          variant="filled"
-          onClose={handleSnackClose}
-        >
+        <Alert severity="success" variant="filled" onClose={handleSnackClose}>
           <Typography variant="h4">
             Thank you for submitting a review
           </Typography>
@@ -172,7 +157,7 @@ const ReviewForm: React.FC<MovieT> = (props) => {
           )}
         />
 
-        <Box >
+        <Box>
           <Button
             type="submit"
             variant="contained"

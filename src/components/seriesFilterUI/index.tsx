@@ -31,8 +31,11 @@ interface SeriesFilterUIProps {
   genreFilter: string;
 }
 
-
-const SeriesFilterUI: React.FC<SeriesFilterUIProps> = ({ onFilterValuesChange, titleFilter, genreFilter }) => {
+const SeriesFilterUI: React.FC<SeriesFilterUIProps> = ({
+  onFilterValuesChange,
+  titleFilter,
+  genreFilter,
+}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (

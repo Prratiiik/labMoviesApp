@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,13 +10,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
-import img from '../../images/film-poster-placeholder.png';
+import img from "../../images/film-poster-placeholder.png";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedTVSeries } from "../../types/interface";
 import { Navigate } from "react-router-dom";
-
 
 const styles = {
   card: { maxWidth: 345 },
@@ -26,28 +25,27 @@ const styles = {
   },
 };
 interface SeriesListProps {
-    series:ListedTVSeries,
-    action: (s: ListedTVSeries) => React.ReactNode;
-  }
-  
-  
-  const SeriesCard: React.FC<SeriesListProps> = (props) => {
-    const series = {...props.series, favourite: false};
-     
-    const { favouriteShows } = useContext(MoviesContext);
-    const openDetails = (e: any ) => {
-        if (e.target instanceof SVGElement) return;
-        <Navigate to ={`/tvseries/${series.id}`} replace={true} />
-      };
-    
-    if (favouriteShows.find((id: any) => id === series.id)) 
-      series.favourite = true;
-     {props.action(series)}
+  series: ListedTVSeries;
+  action: (s: ListedTVSeries) => React.ReactNode;
+}
 
-    //  onClick={openDetails}
+const SeriesCard: React.FC<SeriesListProps> = (props) => {
+  const series = { ...props.series, favourite: false };
+
+  const { favouriteShows } = useContext(MoviesContext);
+  const openDetails = (e: any) => {
+    if (e.target instanceof SVGElement) return;
+    <Navigate to={`/tvseries/${series.id}`} replace={true} />;
+  };
+
+  if (favouriteShows.find((id: any) => id === series.id))
+    series.favourite = true;
+  {
+    props.action(series);
+  }
+
   return (
-    <Card sx={styles.card}
-     >
+    <Card sx={styles.card}>
       <CardHeader
         avatar={
           series.favourite ? (
@@ -87,15 +85,15 @@ interface SeriesListProps {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-           {props.action(series)}
-          <Link to={`/tvseries/${series.id}`}>
+        {props.action(series)}
+        <Link to={`/tvseries/${series.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
-          </Link>
-       </CardActions>
+        </Link>
+      </CardActions>
     </Card>
   );
-}
+};
 
 export default SeriesCard;

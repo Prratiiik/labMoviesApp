@@ -9,29 +9,23 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ColorModeContext } from '../../index.jsx';
 
 const styles = {
   title: {
     flexGrow: 1,
   },
-  appbar: {
-    // background: 'none',
-  },
-  // offset: theme.mixins.toolbar,
+  appbar: {},
 };
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
-const theme = useTheme();
-const colorMode = React.useContext(ColorModeContext);
+
 const SiteHeader: React.FC = () => {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement|null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const open = Boolean(anchorEl);
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   const menuOptions = [
@@ -100,10 +94,6 @@ const SiteHeader: React.FC = () => {
             </>
           ) : (
             <>
-            {theme.palette.mode} mode
-      <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-      </IconButton>
               {menuOptions.map((opt) => (
                 <Button
                   key={opt.label}
@@ -118,8 +108,6 @@ const SiteHeader: React.FC = () => {
         </Toolbar>
       </AppBar>
       <Offset />
-
-      {/* <div className={classes.offset} /> */}
     </>
   );
 };
