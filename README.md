@@ -93,7 +93,7 @@ It uses:
 **Clone the repo:**
 
 ```bash
-git clone https://github.com/rukman7/Movie-application.git
+git clone [https://github.com/rukman7/Movie-application.git](https://github.com/Prratiiik/labMoviesApp/tree/master)
 cd Movie-application
 ```
 
