@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedMovie } from "../../types/interface";
-import { Navigate } from "react-router-dom";
 
 
 const styles = {
@@ -35,10 +34,6 @@ interface MovieListProps {
     const movie = {...props.movie, favourite: false};
      
     const { favourites } = useContext(MoviesContext);
-    const openDetails = (e: any ) => {
-        if (e.target instanceof SVGElement) return;
-        <Navigate to ={`/movies/${movie.id}`} replace={true} />
-      };
     
     if (favourites.find((id: any) => id === movie.id)) 
       movie.favourite = true;

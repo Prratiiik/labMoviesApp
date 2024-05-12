@@ -23,7 +23,7 @@ const genreFiltering = {
 };
 
 const HomePage: React.FC = () => {
-  const { isLoading, isError, error, data, isFetching } = useQuery(
+  const { isLoading, isError, data } = useQuery(
     ["discover"],
     () => getMovies(),
     {

@@ -26,7 +26,6 @@ const styles = {
 };
 
 const SeriesDetails: React.FC<BaseSeries> = (props) => {
-  const series = props;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (

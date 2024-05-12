@@ -15,14 +15,11 @@ const styles = {
   },
 };
 
-interface HeaderProps {
-  title: string;
-}
 const Header: React.FC<{
   title: string;
   page: number;
   pageSetter: (page: number) => void;
-}> = ({ title, page, pageSetter }) => {
+}> = ({ title, page }) => {
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton

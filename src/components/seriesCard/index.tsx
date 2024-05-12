@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedTVSeries } from "../../types/interface";
-import { Navigate } from "react-router-dom";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -33,10 +32,6 @@ const SeriesCard: React.FC<SeriesListProps> = (props) => {
   const series = { ...props.series, favourite: false };
 
   const { favouriteShows } = useContext(MoviesContext);
-  const openDetails = (e: any) => {
-    if (e.target instanceof SVGElement) return;
-    <Navigate to={`/tvseries/${series.id}`} replace={true} />;
-  };
 
   if (favouriteShows.find((id: any) => id === series.id))
     series.favourite = true;

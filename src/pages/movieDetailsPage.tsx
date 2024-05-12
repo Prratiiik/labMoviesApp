@@ -19,9 +19,7 @@ const MovieDetailsPage: React.FC = () => {
 
   const {
     data: similarMovies,
-    error: similarMoviesError,
     isLoading: similarMoviesLoading,
-    isError: similarMoviesIsError,
   } = useQuery<Similar, Error>(["similarMovies", id], () =>
     getSimilarMovies(id || "")
   );

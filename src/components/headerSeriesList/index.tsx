@@ -15,9 +15,6 @@ const styles = {
   },
 };
 
-interface HeaderProps {
-  title: string;
-}
 const Headertv: React.FC<{ title: string }> = ({ title }) => {
   return (
     <Paper component="div" sx={styles.root}>

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { PopularMovies, ListedMovie } from "../types/interface";
 import MovieListPageTemplate from "../components/templateMovieListPage";
 import { getPopularMovies } from "../api/tmdb-api";
@@ -27,7 +27,7 @@ const PopularMoviesPage: FC = () => {
     "Popular movies",
     getPopularMovies
   );
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+  const { filterValues, setFilterValues } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );

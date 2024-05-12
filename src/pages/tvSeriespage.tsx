@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import SeriesTemplate from "../components/templateTVSeriesListPage";
 import { getSeries } from "../api/tmdb-api";
 import { DiscoverTVSeries, ListedTVSeries } from "../types/interface";

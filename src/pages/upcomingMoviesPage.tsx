@@ -26,7 +26,7 @@ const UpcomingMoviesPage: FC = () => {
     "Upcoming movies",
     getUpcomingMovies
   );
-  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+  const { filterValues, setFilterValues } = useFiltering(
     [],
     [titleFiltering, genreFiltering]
   );
