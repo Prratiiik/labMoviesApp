@@ -11,7 +11,7 @@ interface SeriesListProps {
 const SeriesList: React.FC<SeriesListProps> = (props) => {
   const series=props.shows;
   let seriesCards = series.map((s) => (
-    <Grid key={s.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+    <Grid key={s.id} item xs={12} sm={6} md={4} lg={3} xl={3}>
     <Series key={s.id} series={s} action={props.action} />
     </Grid>
   ));

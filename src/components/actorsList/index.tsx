@@ -11,7 +11,7 @@ interface ActorListProps {
 const ActorList: React.FC<ActorListProps> = (props) => {
   const actors=props.actors;
   let actorCards = actors.map((s) => (
-    <Grid key={s.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+    <Grid key={s.id} item xs={1} sm={6} md={4} lg={3} xl={3}>
     <Actors key={s.id} actors={s} action={props.action} />
     </Grid>
   ));

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext  } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,12 +10,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
-import img from "../../images/film-poster-placeholder.png";
+import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { ListedMovie } from "../../types/interface";
 import { Navigate } from "react-router-dom";
+
 
 const styles = {
   card: { maxWidth: 345 },
@@ -25,26 +26,27 @@ const styles = {
   },
 };
 interface MovieListProps {
-  movie: ListedMovie;
-  action: (m: ListedMovie) => React.ReactNode;
-}
-
-const MovieCard: React.FC<MovieListProps> = (props) => {
-  const movie = { ...props.movie, favourite: false };
-
-  const { favourites } = useContext(MoviesContext);
-  const openDetails = (e: any) => {
-    if (e.target instanceof SVGElement) return;
-    <Navigate to={`/movies/${movie.id}`} replace={true} />;
-  };
-
-  if (favourites.find((id: any) => id === movie.id)) movie.favourite = true;
-  {
-    props.action(movie);
+    movie:ListedMovie,
+    action: (m: ListedMovie) => React.ReactNode;
   }
+  
+  
+  const MovieCard: React.FC<MovieListProps> = (props) => {
+    const movie = {...props.movie, favourite: false};
+     
+    const { favourites } = useContext(MoviesContext);
+    const openDetails = (e: any ) => {
+        if (e.target instanceof SVGElement) return;
+        <Navigate to ={`/movies/${movie.id}`} replace={true} />
+      };
+    
+    if (favourites.find((id: any) => id === movie.id)) 
+      movie.favourite = true;
+     {props.action(movie)}
 
   return (
-    <Card sx={styles.card}>
+    <Card sx={styles.card}
+     >
       <CardHeader
         avatar={
           movie.favourite ? (
@@ -84,15 +86,15 @@ const MovieCard: React.FC<MovieListProps> = (props) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {props.action(movie)}
-        <Link to={`/movies/${movie.id}`}>
+           {props.action(movie)}
+          <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
-        </Link>
-      </CardActions>
+          </Link>
+       </CardActions>
     </Card>
   );
-};
+}
 
 export default MovieCard;

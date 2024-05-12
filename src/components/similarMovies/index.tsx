@@ -9,7 +9,8 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import img from '../../images/film-poster-placeholder.png';
 import Typography from "@mui/material/Typography";
 import { BaseMovieList } from "../../types/interface";
-
+import {Link} from "react-router-dom"
+import Button from "@mui/material/Button";
 
 
 const styles = {
@@ -55,6 +56,11 @@ const SimilarMovies: React.FC<BaseMovieList> = ({ movies }) => {
               </Grid>
             </Grid>
           </CardContent>
+          <Link to={`/movies/${movie.id}`}>
+          <Button variant="outlined" size="small" color="primary">
+            More Info ...
+          </Button>
+        </Link>
         </Card>
       </Grid>
     ));

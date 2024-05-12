@@ -46,7 +46,6 @@ export interface BaseMovie {
     original_name: string;
     popularity: number;
     profile_path: string;
-    favourite?: boolean;
   }
   export interface KnownFor {
     adult: boolean;
@@ -74,6 +73,9 @@ export interface BaseMovie {
     series: BaseSeries[];
   } 
 
+  export interface BaseActorList { 
+    actors: BaseActor[];
+  }
   export interface MovieT extends BaseMovie {
     genres: {
       id: number;
@@ -95,6 +97,13 @@ export interface BaseMovie {
     }[];
     
   }
+
+  export interface ActorT extends BaseActors {
+    genres: {
+      id: number;
+      name: string;
+    }[];    
+  }
 //MovieImage interface
   export interface MovieImage {
     file_path: string;
@@ -107,6 +116,16 @@ export interface BaseMovie {
   }
 
   export interface SeriesImage {
+    file_path: string;
+    aspect_ratio?: number; 
+    height?: number;
+    iso_639_1?: string;
+    vote_average?: number;
+    vote_count?: number;
+    width?: number;
+  }
+
+  export interface ActorImage {
     file_path: string;
     aspect_ratio?: number; 
     height?: number;

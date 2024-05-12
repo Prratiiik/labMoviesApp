@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ActorDetails from "../components/actorDetails";
-import { BaseActors } from "../types/interface";
+import { ActorT, BaseActors } from "../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import { getOneActors } from "../api/tmdb-api";
@@ -27,8 +27,8 @@ const ActorDetailsPage: React.FC = () => {
     <>
       {actors ? (
         <>
-          <TemplateActorPage actors={actors as BaseActors}>
-            <ActorDetails {...(actors as BaseActors)} />
+          <TemplateActorPage actors={actors as ActorT}>
+            <ActorDetails {...(actors as ActorT)} />
           </TemplateActorPage>
         </>
       ) : (

@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { getActorImages } from "../../api/tmdb-api";
-import { BaseActors, MovieImage } from "../../types/interface";
+import { ActorT, ActorImage } from "../../types/interface";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 import ActorsHeader from "../headerActor";
@@ -25,13 +25,13 @@ const styles = {
 };
 
 interface TemplateActorPageProps {
-  actors: BaseActors;
+  actors: ActorT;
   children: ReactNode;
 }
 
 const TemplateActorPage: React.FC<TemplateActorPageProps> = (props) => {
   const { actors, children } = props;
-  const { data, error, isLoading, isError } = useQuery<MovieImage[], Error>(
+  const { data, error, isLoading, isError } = useQuery<ActorImage[], Error>(
     ["images", actors.id],
     () => getActorImages(actors.id)
   );
@@ -44,7 +44,7 @@ const TemplateActorPage: React.FC<TemplateActorPageProps> = (props) => {
     return <h1>{error.message}</h1>;
   }
 
-  const images = data as MovieImage[];
+  const images = data as ActorImage[];
 
   return (
     <>
@@ -54,7 +54,7 @@ const TemplateActorPage: React.FC<TemplateActorPageProps> = (props) => {
         <Grid item xs={3}>
           <div style={styles.scrollableContainer}>
             <ImageList cols={1}>
-              {images.map((image: MovieImage) => (
+              {images.map((image: ActorImage) => (
                 <ImageListItem
                   key={image.file_path}
                   sx={styles.gridListTile}
