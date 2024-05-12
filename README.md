@@ -36,75 +36,55 @@ It uses:
 
 > Shows a paginated list of popular movies from the TMDB endpoint
 
-<p align="center">
-  <img width="800" alt="image" src="![Screenshot (192)](https://github.com/Prratiiik/labMoviesApp/assets/144805450/ec169a26-f786-486a-855b-081ff64a7151)
-">
-</p>
+
 
 #### Upcoming movies page   
 
 > Shows a paginated list of upcoming movies from the TMDB endpoint
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image6.png">
-</p>
 
 #### Movie information and cast details
 
 > Clicking on a movie card leads to this page
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image3.png">
-</p>
+
 
 
 #### Similar movies
 
 > Shows a list of similar movies based on the current movie selected
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image13.png">
-</p>
+
 
 #### Movie reviews
 
 > This page shows reviews of a movie
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image4.png">
-</p>
+
 
 #### Write reviews
 
 > A review form that can be used to write reviews
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image14.png">
-</p>
+
 
 #### Favourite movies page
 
 > Shows the movies that are marked as favourite
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image5.png">
-</p>
+
 
 #### Filtering and sorting
 
 > Allows to filter and sort movies based on a criteria
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image8.png">
-</p>
+
 
 #### Storybook
 
 > Used for component development
 
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image15.png">
-</p>
+
 
  
 
