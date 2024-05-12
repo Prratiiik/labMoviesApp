@@ -79,7 +79,8 @@ It uses:
 
 > Shows the movies that are marked as favourite
 
-![Screenshot 2024-05-12 225541](https://github.com/Prratiiik/labMoviesApp/assets/144805450/7ee8c718-4ea8-4a13-9473-a3fce28f00b4)
+![Screenshot 2024-05-12 230251](https://github.com/Prratiiik/labMoviesApp/assets/144805450/36674dc2-a360-4266-b021-178be1213f36)
+
 
 
 #### Filtering and sorting
