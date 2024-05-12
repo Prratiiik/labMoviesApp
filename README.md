@@ -97,45 +97,6 @@ It uses:
   <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image8.png">
 </p>
 
-
-#### Dark mode
-
-> Applies dark theme to all the pages. Image shows dark theme on the landing page
-
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image7.png">
-</p>
-
-#### Account settings
-
-> Show accounts page where the user can update profile details
-
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image12.png">
-</p>
-
-#### Supabase 
-
-> This supabase page shows graphs about request to authentication, storage and datbase
-
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image9.png">
-</p>
-
-> Profiles
-
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image10.png">
-</p>
-
-#### Vercel production deployment
-
-> This page provides information about the recent production deployment, branch, preview and page url
-
-<p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image11.png">
-</p>
-
 #### Storybook
 
 > Used for component development
@@ -169,13 +130,9 @@ This project needs the following environment variables:
 
 ```bash
 VITE_TMDB_KEY=<INSERT TMDB API KEY HERE>
-VITE_SUPABASE_URL=<INSERT SUPABASE URL HERE>
-VITE_SUPABASE_ANON_KEY=<INSERT SUPABASE ANON KEY HERE>
 ```
 
 To get a TMDb API key, visit https://www.themoviedb.org/documentation/api
-
-To create a supabase account, visit https://supabase.com
 
 ## Available Scripts
 
@@ -183,8 +140,4 @@ In the project directory, you can run:
 
 ### `npm run dev`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
