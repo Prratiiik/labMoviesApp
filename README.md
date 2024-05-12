@@ -1,30 +1,190 @@
-# React + TypeScript + Vite
+## Overview 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> This project is a front-end React application. You can use it to discover the latest movies and get more information on them. If you have a [TMDb](https://www.themoviedb.org/) account, you can login with that account in this app to rate movies, add them to your favorites list.
 
-Currently, two official plugins are available:
+It uses:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: as the main UI library
+- **React Router**: for routing
+- **Material UI**: for React components that implement Material Design
+- **Axios**: for making API requests to TMDb
+- **TMDB APIs**: for fetching all information related to movies
+- **Storybook**: for documenting and developing React components
+- **Reactquery**: for caching API calls
 
-## Expanding the ESLint configuration
+# Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] View Upcoming Movies
+- [x] View Current Movies
+- [x] View Upcoming Movies 
+- [x] View current movies 
+- [x] View Actors
+- [x] View Popular Movies
+- [x] View TvSeries
+- [x] View and write reviews 
+- [x] Add Movie to favourites list 
+- [x] Search movies 
+- [x] Add Movies to watch list 
+- [x] Filter Movies by genre and language 
+- [x] Filter Seriesby genre and language
+- [x] Sort movies by various criteria 
+- [x] Show similar movies based on the movie or series being viewed
 
-- Configure the top-level `parserOptions` property like this:
+## Feature Design
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+#### Landing page
+
+> Shows a paginated list of popular movies from the TMDB endpoint
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image2.png">
+</p>
+
+#### Upcoming movies page   
+
+> Shows a paginated list of upcoming movies from the TMDB endpoint
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image6.png">
+</p>
+
+#### Movie information and cast details
+
+> Clicking on a movie card leads to this page
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image3.png">
+</p>
+
+
+#### Similar movies
+
+> Shows a list of similar movies based on the current movie selected
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image13.png">
+</p>
+
+#### Movie reviews
+
+> This page shows reviews of a movie
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image4.png">
+</p>
+
+#### Write reviews
+
+> A review form that can be used to write reviews
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image14.png">
+</p>
+
+#### Favourite movies page
+
+> Shows the movies that are marked as favourite
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image5.png">
+</p>
+
+#### Filtering and sorting
+
+> Allows to filter and sort movies based on a criteria
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image8.png">
+</p>
+
+
+#### Dark mode
+
+> Applies dark theme to all the pages. Image shows dark theme on the landing page
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image7.png">
+</p>
+
+#### Account settings
+
+> Show accounts page where the user can update profile details
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image12.png">
+</p>
+
+#### Supabase 
+
+> This supabase page shows graphs about request to authentication, storage and datbase
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image9.png">
+</p>
+
+> Profiles
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image10.png">
+</p>
+
+#### Vercel production deployment
+
+> This page provides information about the recent production deployment, branch, preview and page url
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image11.png">
+</p>
+
+#### Storybook
+
+> Used for component development
+
+<p align="center">
+  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image15.png">
+</p>
+
+ 
+
+## Installation
+
+**Clone the repo:**
+
+```bash
+git clone https://github.com/rukman7/Movie-application.git
+cd Movie-application
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**Install the dependencies:**
+
+```bash
+npm install
+```
+
+**Set the environment variables:**
+
+Create a `.env` file which includes all your secret environment variables.
+
+This project needs the following environment variables:
+
+```bash
+VITE_TMDB_KEY=<INSERT TMDB API KEY HERE>
+VITE_SUPABASE_URL=<INSERT SUPABASE URL HERE>
+VITE_SUPABASE_ANON_KEY=<INSERT SUPABASE ANON KEY HERE>
+```
+
+To get a TMDb API key, visit https://www.themoviedb.org/documentation/api
+
+To create a supabase account, visit https://supabase.com
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
