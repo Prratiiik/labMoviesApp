@@ -37,7 +37,8 @@ It uses:
 > Shows a paginated list of popular movies from the TMDB endpoint
 
 <p align="center">
-  <img width="800" alt="image" src="https://github.com/rukman7/Movie-application/blob/master/images/image2.png">
+  <img width="800" alt="image" src="![Screenshot (192)](https://github.com/Prratiiik/labMoviesApp/assets/144805450/ec169a26-f786-486a-855b-081ff64a7151)
+">
 </p>
 
 #### Upcoming movies page   
