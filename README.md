@@ -97,7 +97,8 @@ It uses:
 
 ![Screenshot 2024-05-12 224358](https://github.com/Prratiiik/labMoviesApp/assets/144805450/0b1fb84c-73d6-4cc7-a3ab-14c0a10fc7d6)
 
- 
+ ![Screenshot (184)](https://github.com/Prratiiik/labMoviesApp/assets/144805450/bac80cb9-a76a-4b7d-991e-cee04033b95c)
+
 
 ## Installation
 
