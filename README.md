@@ -36,6 +36,7 @@ It uses:
 
 > Shows a paginated list of popular movies from the TMDB endpoint
 
+![Screenshot (192)](https://github.com/Prratiiik/labMoviesApp/assets/144805450/b6d8063d-b160-46be-bd23-9e1233b13c10)
 
 
 #### Upcoming movies page   
